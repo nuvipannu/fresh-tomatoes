@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Roboto Font -->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+    body {
+      padding-top: 80px;
+      font-family: 'Roboto', sans-serif;
+    }
+    #trailer .modal-dialog {
+      margin-top: 200px;
+      width: 640px;
+      height: 480px;
+    }
+    .hanging-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      z-index: 9001;
+    }
+    #trailer-video {
+      width: 100%;
+      height: 100%;
+    }
+    .movie-tile {
+      margin-bottom: 20px;
+      padding-top: 20px;
+    }
+    .movie-tile:hover {
+      background-color: #EEE;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+    }
+    .scale-media {
+      padding-bottom: 56.25%;
+      position: relative;
+    }
+    .scale-media iframe {
+      border: none;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      background-color: white;
+    }
+    .navbar {
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-header {
+      font-weight: 700;
+    }
+    q {
+      quotes: "\201C" "\201D";
+      color: #757575;
+    }
+    img {
+      border-radius: 2px;
+    }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    // Pause the video when the modal is closed
+    $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function(event) {
+      // Remove the src so the player itself gets removed, as this is the only
+      // reliable way to ensure the video stops playing in IE
+      $("#trailer-video-container").empty();
+    });
+    // Start playing the video whenever the trailer modal is opened
+    $(document).on('click', '.movie-tile', function(event) {
+      var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+      var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+      $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+        'id': 'trailer-video',
+        'type': 'text-html',
+        'src': sourceUrl,
+        'frameborder': 0
+      }));
+    });
+    // Animate in the movies when the page loads
+    $(document).ready(function() {
+      $('.movie-tile').hide().first().show("fast", function showNext() {
+        $(this).next("div").show("fast", showNext);
+      });
+    });
+    </script>
+  </head>
+  
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24" />
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="7pQQHnqBa2E" data-toggle="modal" data-target="#trailer">
+  <img src="images/scarface.jpg" width="220" height="342">
+  <h2 class="title">Scarface</h2>
+  <h4>Crime / 170 mins</h4>
+  <h5><q>Most quoted gangster movie out there</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="TbQm5doF_Uc" data-toggle="modal" data-target="#trailer">
+  <img src="images/frozen.jpg" width="220" height="342">
+  <h2 class="title">Frozen</h2>
+  <h4>Animation / 102 mins</h4>
+  <h5><q>The music soundtrack is so good.. Let it go xD</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5jaI1XOB-bs" data-toggle="modal" data-target="#trailer">
+  <img src="images/black_swan.jpg" width="220" height="342">
+  <h2 class="title">Black Swan</h2>
+  <h4>Thriller / 108 mins</h4>
+  <h5><q>This is the best female performance ever</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="8hP9D6kZseM" data-toggle="modal" data-target="#trailer">
+  <img src="images/inception.jpg" width="220" height="342">
+  <h2 class="title">Inception</h2>
+  <h4>Thriller / 148 mins</h4>
+  <h5><q>A dream in a dream in a dream.. Whoa!</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KdzH6a-XEGM" data-toggle="modal" data-target="#trailer">
+  <img src="images/love_actually.jpg" width="220" height="342">
+  <h2 class="title">Love Actually</h2>
+  <h4>Romantic Comedy / 135 mins</h4>
+  <h5><q>Lots of great + famous actors</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="iszwuX1AK6A" data-toggle="modal" data-target="#trailer">
+  <img src="images/wolf.jpg" width="220" height="342">
+  <h2 class="title">The Wolf of Wall Street</h2>
+  <h4>Drama / 179 mins</h4>
+  <h5><q>Awesome movie. DiCaprio is the man!</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ivee8cm55Ao" data-toggle="modal" data-target="#trailer">
+  <img src="images/constantine.jpg" width="220" height="342">
+  <h2 class="title">Constantine</h2>
+  <h4>Fantasy / 120 mins</h4>
+  <h5><q>This is Constantine, John Constantine... a$$hole</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1qLUMSbrlDE" data-toggle="modal" data-target="#trailer">
+  <img src="images/alot_like_love.jpg" width="220" height="342">
+  <h2 class="title">A Lot Like Love</h2>
+  <h4>Romantic Comedy / 106 mins</h4>
+  <h5><q>A lot like love story</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KHGHEpUeUwo" data-toggle="modal" data-target="#trailer">
+  <img src="images/penguins.jpg" width="220" height="342">
+  <h2 class="title">Penguins of Madagascar</h2>
+  <h4>Animation / 92 mins</h4>
+  <h5><q>Cute and cuddly penguins! :) <3</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pK2zYHWDZKo" data-toggle="modal" data-target="#trailer">
+  <img src="images/xmen_dofp.jpg" width="220" height="342">
+  <h2 class="title">X-MEN: Days of Future Past</h2>
+  <h4>Action / 132 mins</h4>
+  <h5><q>Wolverine goes back in time</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="EXeTwQWrcwY" data-toggle="modal" data-target="#trailer">
+  <img src="images/dark_knight.jpg" width="220" height="342">
+  <h2 class="title">Dark Knight</h2>
+  <h4>Crime / 152 mins</h4>
+  <h5><q>The best crime and thriller movie of all time!</q></h5>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="0Z1XpfbuZOA" data-toggle="modal" data-target="#trailer">
+  <img src="images/pirates.jpg" width="220" height="342">
+  <h2 class="title">Pirates of the Caribbean: The Curse of the Black Pearl</h2>
+  <h4>Action / 143 mins</h4>
+  <h5><q>The first and best of all four POC's</q></h5>
+</div>
+
+    </div>
+  </body>
+</html>
